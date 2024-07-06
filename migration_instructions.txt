@@ -1,0 +1,28 @@
+
+unable to access wslogin
+stevestrutt@raspberrypi:/var/www/html/hws/wp-content/plugins $ sudo mv rename-wp-login rename-wp-login-disabled
+
+Critical error on Plugins config page 
+
+stevestrutt@raspberrypi:/var/www/html/hws/wp-content $ sudo mv plugins plugins.hold
+stevestrutt@raspberrypi:/var/www/html/hws/wp-content $ sudo mv plugins.hold plugins
+restart apache 
+
+
+Only home page accessible 
+
+Change rewrite from none to All 
+
+<Directory /var/www/html>
+                Options Indexes FollowSymLinks MultiViews
+                AllowOverride All
+                Require all granted
+ </Directory> 
+
+stevestrutt@raspberrypi:/etc/apache2 $ sudo nano apache2.conf
+stevestrutt@raspberrypi:/etc/apache2 $ sudo service apache2 restart
+stevestrutt@raspberrypi:/etc/apache2 $ sudo a2enmod rewrite
+Enabling module rewrite.
+To activate the new configuration, you need to run:
+  systemctl restart apache2
+stevestrutt@raspberrypi:/etc/apache2 $ sudo service apache2 restart
